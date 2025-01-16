@@ -54,6 +54,7 @@ func printFeature(client pb.RouteGuideClient, point *pb.Point) {
 		log.Fatalf("client.GetFeature failed: %v", err)
 	}
 	log.Println(feature)
+	log.Println("end GetFeature")
 }
 
 // printFeatures lists all the features within the given bounding Rectangle.
@@ -76,6 +77,7 @@ func printFeatures(client pb.RouteGuideClient, rect *pb.Rectangle) {
 		log.Printf("Feature: name: %q, point:(%v, %v)", feature.GetName(),
 			feature.GetLocation().GetLatitude(), feature.GetLocation().GetLongitude())
 	}
+	log.Println("end ListFeatures")
 }
 
 // runRecordRoute sends a sequence of points to server and expects to get a RouteSummary from server.
@@ -103,6 +105,7 @@ func runRecordRoute(client pb.RouteGuideClient) {
 		log.Fatalf("client.RecordRoute failed: %v", err)
 	}
 	log.Printf("Route summary: %v", reply)
+	log.Println("end RecordRoute")
 }
 
 // runRouteChat receives a sequence of route notes, while sending notes for various locations.
@@ -143,6 +146,7 @@ func runRouteChat(client pb.RouteGuideClient) {
 	}
 	stream.CloseSend()
 	<-waitc
+	log.Println("end RouteChat")
 }
 
 func randomPoint() *pb.Point {
