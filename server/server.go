@@ -226,7 +226,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
 	}
-	log.Printf("start main: port: %d", *port)
+	log.Printf("start main: port: %d, host: %s", *port, *host)
 
 	var opts []grpc.ServerOption
 	if *tls {
